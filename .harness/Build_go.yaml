@@ -1,0 +1,36 @@
+pipeline:
+  name: Build go
+  identifier: Build_go
+  projectIdentifier: training
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.github_go
+        build: <+input>
+  stages:
+    - stage:
+        name: build_it
+        identifier: build_it
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Build Go App
+                  identifier: build_go_app
+                  spec:
+                    command: |-
+                      echo "Welcome to Harness CI"
+                      go build
+                      go test
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
