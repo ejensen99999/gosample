@@ -6,9 +6,9 @@ pipeline:
   properties:
     ci:
       codebase:
-        build: <+input>
         connectorRef: account.Admin_Github
         repoName: gosample
+        build: <+input>
   stages:
     - stage:
         identifier: build
@@ -27,9 +27,9 @@ pipeline:
                       go build
                       go test
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
+            type: Docker
             spec: {}
-            type: Cloud
         type: CI
