@@ -7,8 +7,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: account.Admin_Github
-        repoName: gosample
+        connectorRef: github_go
         build: <+input>
   stages:
     - stage:
