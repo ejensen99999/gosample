@@ -38,3 +38,5 @@ pipeline:
             type: Docker
             spec: {}
         type: CI
+        delegateSelectors:
+          - custom-delegate
