@@ -36,3 +36,5 @@ pipeline:
             spec: {}
         delegateSelectors:
           - custom-delegate
+  delegateSelectors:
+    - docker-delegate
