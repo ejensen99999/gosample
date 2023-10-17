@@ -6,9 +6,9 @@ pipeline:
   properties:
     ci:
       codebase:
-        build: <+input>
         connectorRef: account.Github_OAuth_1697546463500
-        repoName: gosample
+        repoName: ejensen99999/gosample
+        build: <+input>
   stages:
     - stage:
         identifier: build
