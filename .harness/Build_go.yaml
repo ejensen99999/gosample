@@ -33,7 +33,7 @@ pipeline:
         identifier: build_it
         type: CI
         spec:
-          cloneCodebase: false
+          cloneCodebase: true
           execution:
             steps:
               - step:
@@ -55,7 +55,11 @@ pipeline:
           caching:
             enabled: false
             paths: []
-        delegateSelectors:
-          - custom-delegate
   delegateSelectors:
-    - docker-delegate
+    - custom-delegate
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.github_go
+        build: <+input>
+        prCloneStrategy: MergeCommit
