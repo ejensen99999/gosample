@@ -37,6 +37,16 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: GitClone
+                  name: GitClone_1
+                  identifier: GitClone_1
+                  spec:
+                    connectorRef: account.Github
+                    build:
+                      type: branch
+                      spec:
+                        branch: main
+              - step:
                   type: Run
                   name: Build Go App
                   identifier: build_go_app
