@@ -4,12 +4,6 @@ pipeline:
   projectIdentifier: training
   orgIdentifier: default
   tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: account.github_go
-        build: <+input>
-        prCloneStrategy: MergeCommit
   stages:
     - stage:
         name: why_not
@@ -37,10 +31,9 @@ pipeline:
     - stage:
         name: build_it
         identifier: build_it
-        description: ""
         type: CI
         spec:
-          cloneCodebase: true
+          cloneCodebase: false
           execution:
             steps:
               - step:
@@ -51,14 +44,17 @@ pipeline:
                     shell: Sh
                     command: |-
                       echo "Welcome to Harness CI"
-                      #go build
-                      #go test
+                      go build
+                      go test
           platform:
             os: Linux
             arch: Amd64
           runtime:
             type: Docker
             spec: {}
+          caching:
+            enabled: false
+            paths: []
         delegateSelectors:
           - custom-delegate
   delegateSelectors:
